@@ -1,0 +1,6 @@
+@BTH_BUOI1_HostAddress = http://localhost:5081
+
+GET {{BTH_BUOI1_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
