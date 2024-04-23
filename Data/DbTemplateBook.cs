@@ -44,7 +44,7 @@ namespace BTH_BUOI1.Data
                     Genre = 1,
                     CoverUrl = "https://www.tailieuielts.com/wp-content/uploads/2022/01/The-Alchemist-676x1024.jpg",
                     DateAdded = new DateTime(2024, 4, 16),
-                    PublisherId = 101 // Sử dụng PublishersID thay vì Idpublisher
+                    PublisherId = 101 
                 },
                 new Books
                 {
@@ -57,7 +57,7 @@ namespace BTH_BUOI1.Data
                     Genre = 2,
                     CoverUrl = "https://www.tailieuielts.com/wp-content/uploads/2022/01/Harry-Potter.jpg",
                     DateAdded = new DateTime(2024, 4, 15),
-                    PublisherId = 102 // Sử dụng PublishersID thay vì Idpublisher
+                    PublisherId = 102 
                 },
                 new Books
                 {
@@ -70,7 +70,7 @@ namespace BTH_BUOI1.Data
                     Genre = 3,
                     CoverUrl = "https://www.tailieuielts.com/wp-content/uploads/2022/01/diary-of-a-wimpy-kid.jpg",
                     DateAdded = new DateTime(2024, 4, 14),
-                    PublisherId = 103 // Sử dụng PublishersID thay vì Idpublisher
+                    PublisherId = 103 
                 },
                 new Books
                 {
@@ -83,7 +83,7 @@ namespace BTH_BUOI1.Data
                     Genre = 4,
                     CoverUrl = "https://www.tailieuielts.com/wp-content/uploads/2022/01/to-kill-a-mockingbird.jpg",
                     DateAdded = new DateTime(2024, 4, 13),
-                    PublisherId = 104 // Sử dụng PublishersID thay vì Idpublisher
+                    PublisherId = 104 
                 },
                 new Books
                 {
@@ -96,7 +96,7 @@ namespace BTH_BUOI1.Data
                     Genre = 5,
                     CoverUrl = "https://www.tailieuielts.com/wp-content/uploads/2022/01/the-catcher-in-the-rye.jpg",
                     DateAdded = new DateTime(2024, 4, 12),
-                    PublisherId = 105 // Sử dụng PublishersID thay vì Idpublisher
+                    PublisherId = 105 
                 }
             );
         }

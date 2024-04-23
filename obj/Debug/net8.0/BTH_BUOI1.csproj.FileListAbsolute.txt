@@ -134,3 +134,4 @@ D:\USB VUONG\Lập trình web2 (API)\Bài Tập\BTH_BUOI1\obj\Debug\net8.0\refin
 D:\USB VUONG\Lập trình web2 (API)\Bài Tập\BTH_BUOI1\obj\Debug\net8.0\BTH_BUOI1.pdb
 D:\USB VUONG\Lập trình web2 (API)\Bài Tập\BTH_BUOI1\obj\Debug\net8.0\BTH_BUOI1.genruntimeconfig.cache
 D:\USB VUONG\Lập trình web2 (API)\Bài Tập\BTH_BUOI1\obj\Debug\net8.0\ref\BTH_BUOI1.dll
+D:\USB VUONG\Lập trình web2 (API)\Bài Tập\BTH_BUOI1\obj\Debug\net8.0\BTH_BUOI1.sourcelink.json
