@@ -1,7 +1,9 @@
 ﻿using BTH_BUOI1.Data;
 using BTH_BUOI1.Models.DTO;
+using BTH_BUOI1.Models.Sorted;
 using BTH_BUOI1.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 namespace WebAPI_simple.Controllers
 {
     [Route("api/[controller]")]
@@ -15,11 +17,11 @@ namespace WebAPI_simple.Controllers
             _dbContext = dbContext;
             _bookRepository = bookRepository;
         }
-        [HttpGet("get-all-books")]
-        public IActionResult GetAll()
+        [HttpGet("get-all-books/{sorted}")]
+        public IActionResult GetAll(SortField sorted)
         {
             // su dung reposity pattern
-            var allBooks = _bookRepository.GetAllBooks();
+            var allBooks = _bookRepository.GetAllBooks(sorted);
             return Ok(allBooks);
         }
         [HttpGet]

@@ -1,8 +1,10 @@
 ﻿using BTH_BUOI1.Data;
 using BTH_BUOI1.Models.DTO;
+using BTH_BUOI1.Models.Sorted;
 using BTH_BUOI1.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace BTH_BUOI1.Controllers
 {
@@ -19,10 +21,10 @@ namespace BTH_BUOI1.Controllers
             _publisherRepository = publisherRepository;
         }
 
-        [HttpGet("get-all-publishers")]
-        public IActionResult GetAllPublishers()
+        [HttpGet("get-all-publishers/{sorted}")]
+        public IActionResult GetAllPublishers(SortField sorted)
         {
-            var allPublishers = _publisherRepository.GetAllPublishers();
+            var allPublishers = _publisherRepository.GetAllPublishers(sorted);
             return Ok(allPublishers);
         }
 

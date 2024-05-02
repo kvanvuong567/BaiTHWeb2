@@ -2,6 +2,7 @@
 using BTH_BUOI1.Models;
 using BTH_BUOI1.Models.Domain;
 using BTH_BUOI1.Models.DTO;
+using BTH_BUOI1.Models.Sorted;
 
 namespace BTH_BUOI1.Repositories
 {
@@ -13,9 +14,23 @@ namespace BTH_BUOI1.Repositories
             _dbContext = dbContext;
         }
 
-        public List<Publishers> GetAllPublishers()
+        public List<Publishers> GetAllPublishers(SortField sortedBy)
         {
-            var AllPublishers = _dbContext.Publishers.Select(publisher => new Publishers()
+            IQueryable<Publishers> query = _dbContext.Publishers;
+
+            switch (sortedBy)
+            {
+                case SortField.Name:
+                    query = query.OrderBy(publisher => publisher.Name);
+                    break;
+                case SortField.ID:
+                    query = query.OrderBy(publisher => publisher.ID);
+                    break;
+                default:
+                    break;
+            }
+
+            var AllPublishers = query.Select(publisher => new Publishers()
             {
                 ID = publisher.ID,
                 Name = publisher.Name,

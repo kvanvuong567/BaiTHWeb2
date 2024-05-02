@@ -2,6 +2,7 @@
 using BTH_BUOI1.Models;
 using BTH_BUOI1.Models.Domain;
 using BTH_BUOI1.Models.DTO;
+using BTH_BUOI1.Models.Sorted;
 
 namespace BTH_BUOI1.Repositories
 {
@@ -13,9 +14,23 @@ namespace BTH_BUOI1.Repositories
             _dbContext = dbContext;
         }
 
-        public List<Authors> GetAllAuthors()
+        public List<Authors> GetAllAuthors(SortField sortedBy)
         {
-            var allAuthors = _dbContext.Authors.Select(author => new Authors
+            IQueryable<Authors> query = _dbContext.Authors;
+
+            switch (sortedBy)
+            {
+                case SortField.Name:
+                    query = query.OrderBy(author => author.FullName);
+                    break;
+                case SortField.ID:
+                    query = query.OrderBy(author => author.ID);
+                    break;
+                default:
+                    break;
+            }
+
+            var allAuthors = query.Select(author => new Authors
             {
                 ID = author.ID,
                 FullName = author.FullName,
@@ -24,6 +39,7 @@ namespace BTH_BUOI1.Repositories
             .ToList();
             return allAuthors;
         }
+
         public Authors GetAuthorById(int id)
         {
             var authorWithDomain = _dbContext.Authors.Where(n => n.ID == id);

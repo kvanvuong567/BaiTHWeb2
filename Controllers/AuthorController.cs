@@ -1,5 +1,6 @@
 ﻿using BTH_BUOI1.Data;
 using BTH_BUOI1.Models.DTO;
+using BTH_BUOI1.Models.Sorted;
 using BTH_BUOI1.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,11 +20,10 @@ namespace BTH_BUOI1.Controllers
             _authorrepository = authorrepository;
         }
 
-        [HttpGet("get-all-authors")]
-        public IActionResult GetAll()
+        [HttpGet("get-all-authors/{sorted}")]
+        public IActionResult GetAll(SortField sorted)
         {
-            // su dung reposity pattern
-            var allAuthors = _authorrepository.GetAllAuthors();
+            var allAuthors = _authorrepository.GetAllAuthors(sorted);
             return Ok(allAuthors);
         }
 

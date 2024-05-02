@@ -2,6 +2,7 @@
 using BTH_BUOI1.Models.Domain;
 using BTH_BUOI1.Models.DTO;
 using BTH_BUOI1.Models;
+using BTH_BUOI1.Models.Sorted;
 
 namespace BTH_BUOI1.Repositories
 {
@@ -12,24 +13,39 @@ namespace BTH_BUOI1.Repositories
             {
                 _dbContext = dbContext;
             }
-            public List<BookWithAuthorAndPublisherDTO> GetAllBooks()
+        public List<BookWithAuthorAndPublisherDTO> GetAllBooks(SortField sortedBy)
+        {
+            IQueryable<Books> query = _dbContext.Books;
+
+            switch (sortedBy)
             {
-                var allBooks = _dbContext.Books.Select(Books => new BookWithAuthorAndPublisherDTO()
-                {
-                    ID = Books.ID,
-                    Title = Books.Title,
-                    Description = Books.Description,
-                    IsRead = Books.IsRead,
-                    DateRead = Books.DateRead ?? null,
-                    Rate = Books.Rate ?? null,
-                    Genre = Books.Genre,
-                    CoverUrl = Books.CoverUrl,
-                    PublisherName = Books.Publisher.Name,
-                    AuthorName = Books.Book_Authors.Select(n => n.Author.FullName).ToList()
-                }).ToList();
-                return allBooks;
+                case SortField.Name:
+                    query = query.OrderBy(book => book.Title);
+                    break;
+                case SortField.ID:
+                    query = query.OrderBy(book => book.ID);
+                    break;
+                default:
+                    break;
             }
-            public BookWithAuthorAndPublisherDTO GetBookById(int id)
+
+            var allBooks = query.Select(book => new BookWithAuthorAndPublisherDTO()
+            {
+                ID = book.ID,
+                Title = book.Title,
+                Description = book.Description,
+                IsRead = book.IsRead,
+                DateRead = book.DateRead,
+                Rate = book.Rate,
+                Genre = book.Genre,
+                CoverUrl = book.CoverUrl,
+                PublisherName = book.Publisher.Name,
+                AuthorName = book.Book_Authors.Select(n => n.Author.FullName).ToList()
+            }).ToList();
+
+            return allBooks;
+        }
+        public BookWithAuthorAndPublisherDTO GetBookById(int id)
             {
                 var bookWithDomain = _dbContext.Books.Where(n => n.ID == id);
                 //Map Domain Model to DTOs
