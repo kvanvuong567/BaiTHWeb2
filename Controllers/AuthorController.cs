@@ -4,6 +4,7 @@ using BTH_BUOI1.Models.Sorted;
 using BTH_BUOI1.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace BTH_BUOI1.Controllers
 {
@@ -20,11 +21,33 @@ namespace BTH_BUOI1.Controllers
             _authorrepository = authorrepository;
         }
 
-        [HttpGet("get-all-authors/{sorted}")]
-        public IActionResult GetAll(SortField sorted)
+        [HttpGet("get-all-authors")]
+        public IActionResult GetAll(SortField sorted, 
+            string? authorName = null,
+            int page = 1, int pageSize = 10)
         {
             var allAuthors = _authorrepository.GetAllAuthors(sorted);
-            return Ok(allAuthors);
+
+            if (!string.IsNullOrEmpty(authorName))
+            {
+                allAuthors = allAuthors.Where(a => a.FullName.Contains(authorName)).ToList();
+            }
+            // Phân trang
+            var totalItems = allAuthors.Count();
+            var totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+            var booksOnPage = allAuthors.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+            var paginationMetadata = new
+            {
+                totalItems,
+                pageSize,
+                currentPage = page,
+                totalPages
+            };
+
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(paginationMetadata));
+
+            return Ok(booksOnPage);
         }
 
         [HttpGet]

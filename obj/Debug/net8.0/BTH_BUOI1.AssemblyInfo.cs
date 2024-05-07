@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BTH_BUOI1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bad2dd0f80f9808e7b0d6ed4eb850ae5f406f917")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+97038f4f4188fd796bf08800a28f60ccf2b3c30f")]
 [assembly: System.Reflection.AssemblyProductAttribute("BTH_BUOI1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BTH_BUOI1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

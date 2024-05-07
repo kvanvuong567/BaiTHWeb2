@@ -92,9 +92,16 @@ namespace BTH_BUOI1.Migrations
                 {
                     b.Property<int?>("ID")
                         .ValueGeneratedOnAdd()
+                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("ID"));
+
+                    b.Property<int?>("AuthorId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AuthorsID")
+                        .HasColumnType("int");
 
                     b.Property<string>("CoverUrl")
                         .HasColumnType("nvarchar(max)");
@@ -125,6 +132,8 @@ namespace BTH_BUOI1.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("AuthorsID");
+
                     b.HasIndex("PublisherId");
 
                     b.ToTable("Books");
@@ -133,6 +142,7 @@ namespace BTH_BUOI1.Migrations
                         new
                         {
                             ID = 201,
+                            AuthorId = 1,
                             CoverUrl = "https://www.tailieuielts.com/wp-content/uploads/2022/01/The-Alchemist-676x1024.jpg",
                             DateAdded = new DateTime(2024, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateRead = new DateTime(2024, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -146,6 +156,7 @@ namespace BTH_BUOI1.Migrations
                         new
                         {
                             ID = 202,
+                            AuthorId = 2,
                             CoverUrl = "https://www.tailieuielts.com/wp-content/uploads/2022/01/Harry-Potter.jpg",
                             DateAdded = new DateTime(2024, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateRead = new DateTime(2024, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -159,6 +170,7 @@ namespace BTH_BUOI1.Migrations
                         new
                         {
                             ID = 203,
+                            AuthorId = 3,
                             CoverUrl = "https://www.tailieuielts.com/wp-content/uploads/2022/01/diary-of-a-wimpy-kid.jpg",
                             DateAdded = new DateTime(2024, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateRead = new DateTime(2024, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -172,6 +184,7 @@ namespace BTH_BUOI1.Migrations
                         new
                         {
                             ID = 204,
+                            AuthorId = 4,
                             CoverUrl = "https://www.tailieuielts.com/wp-content/uploads/2022/01/to-kill-a-mockingbird.jpg",
                             DateAdded = new DateTime(2024, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateRead = new DateTime(2024, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -185,6 +198,7 @@ namespace BTH_BUOI1.Migrations
                         new
                         {
                             ID = 205,
+                            AuthorId = 5,
                             CoverUrl = "https://www.tailieuielts.com/wp-content/uploads/2022/01/the-catcher-in-the-rye.jpg",
                             DateAdded = new DateTime(2024, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateRead = new DateTime(2024, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -257,9 +271,15 @@ namespace BTH_BUOI1.Migrations
 
             modelBuilder.Entity("BTH_BUOI1.Models.Domain.Books", b =>
                 {
+                    b.HasOne("BTH_BUOI1.Models.Authors", "Authors")
+                        .WithMany()
+                        .HasForeignKey("AuthorsID");
+
                     b.HasOne("BTH_BUOI1.Models.Publishers", "Publisher")
                         .WithMany("Books")
                         .HasForeignKey("PublisherId");
+
+                    b.Navigation("Authors");
 
                     b.Navigation("Publisher");
                 });
