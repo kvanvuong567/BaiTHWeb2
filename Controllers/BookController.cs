@@ -3,6 +3,7 @@ using BTH_BUOI1.Data;
 using BTH_BUOI1.Models.DTO;
 using BTH_BUOI1.Models.Sorted;
 using BTH_BUOI1.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 using System.Text.Json;
@@ -11,24 +12,34 @@ namespace WebAPI_simple.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BooksController : ControllerBase
     {
         private readonly AppDbContext _dbContext;
         private readonly IBookRepository _bookRepository;
-        public BooksController(AppDbContext dbContext, IBookRepository bookRepository)
+        private readonly ILogger<BooksController> _logger;
+        public BooksController(AppDbContext dbContext, IBookRepository bookRepository, 
+            ILogger<BooksController> logger)
         {
             _dbContext = dbContext;
             _bookRepository = bookRepository;
+            _logger = logger;
         }
        
         [HttpGet("get-all-books")]
+        [Authorize(Roles = "Read,Write")]
         public IActionResult GetAll(SortField sorted,
             string? bookTitle = null, 
             string? publisherName = null, 
             int page = 1, int pageSize = 10)
         {
+            _logger.LogInformation("GetAll Book Action method was invoked");
+            _logger.LogWarning("This is a warning log");
+            _logger.LogError("This is a error log");
             // su dung reposity pattern
             var allBooks = _bookRepository.GetAllBooks(sorted);
+            //debug
+            _logger.LogInformation("Finished GetAllBook request with data: {Data}", JsonSerializer.Serialize(allBooks));
             //tim kiem
             if (!string.IsNullOrEmpty(bookTitle))
             {
@@ -58,6 +69,7 @@ namespace WebAPI_simple.Controllers
         }
         [HttpGet]
         [Route("get-book-by-id/{id}")]
+        [Authorize(Roles = "Read,Write")]
         public IActionResult GetBookById([FromRoute] int id)
         {
             var bookWithIdDTO = _bookRepository.GetBookById(id);
@@ -65,6 +77,7 @@ namespace WebAPI_simple.Controllers
         }
         
         [HttpPost("add - book")]
+        [Authorize(Roles ="Write")]
         [ValidateModel]
         public IActionResult AddBook([FromBody] AddBookRequestDTO addBookRequestDTO)
         {
@@ -83,12 +96,14 @@ namespace WebAPI_simple.Controllers
 
         }
         [HttpPut("update-book-by-id/{id}")]
+        [Authorize(Roles = "Write")]
         public IActionResult UpdateBookById(int id, [FromBody] AddBookRequestDTO bookDTO)
         {
             var updateBook = _bookRepository.UpdateBookById(id, bookDTO);
             return Ok(updateBook);
         }
         [HttpDelete("delete-book-by-id/{id}")]
+        [Authorize(Roles = "Write")]
         public IActionResult DeleteBookById(int id)
         {
             var deleteBook = _bookRepository.DeleteBookById(id);
