@@ -1,0 +1,10 @@
+2024-05-14 09:00:56.260 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5081/api/Images - null null
+2024-05-14 09:00:56.287 +07:00 [INF] Executing endpoint 'BTH_BUOI1.Controllers.ImagesController.GetAllInfoImage (BTH_BUOI1)'
+2024-05-14 09:00:56.293 +07:00 [INF] Route matched with {action = "GetAllInfoImage", controller = "Images"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllInfoImage() on controller BTH_BUOI1.Controllers.ImagesController (BTH_BUOI1).
+2024-05-14 09:00:56.334 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[FileDescription], [i].[FileExtension], [i].[FileName], [i].[FilePath], [i].[FileSizeInBytes]
+FROM [Images] AS [i]
+2024-05-14 09:00:56.343 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[BTH_BUOI1.Models.Image, BTH_BUOI1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-05-14 09:00:56.346 +07:00 [INF] Executed action BTH_BUOI1.Controllers.ImagesController.GetAllInfoImage (BTH_BUOI1) in 49.6973ms
+2024-05-14 09:00:56.348 +07:00 [INF] Executed endpoint 'BTH_BUOI1.Controllers.ImagesController.GetAllInfoImage (BTH_BUOI1)'
+2024-05-14 09:00:56.354 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5081/api/Images - 200 null application/json; charset=utf-8 94.0085ms

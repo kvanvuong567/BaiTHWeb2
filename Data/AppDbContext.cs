@@ -12,7 +12,7 @@ namespace BTH_BUOI1.Data
         public DbSet<Publishers> Publishers { get; set; }
         public DbSet<Authors> Authors { get; set; }
         public DbSet<Book_Author> Book_Authors { get; set; }
-
+        public DbSet<Image> Images { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Books>()

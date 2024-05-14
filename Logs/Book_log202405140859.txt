@@ -1,0 +1,13 @@
+2024-05-14 08:59:12.330 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5081/api/Images/upload - multipart/form-data; boundary=----WebKitFormBoundaryYrzNowvm5qTZpCbS 113063
+2024-05-14 08:59:12.409 +07:00 [INF] Executing endpoint 'BTH_BUOI1.Controllers.ImagesController.Upload (BTH_BUOI1)'
+2024-05-14 08:59:12.421 +07:00 [INF] Route matched with {action = "Upload", controller = "Images"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Upload(BTH_BUOI1.Models.DTO.ImageUploadRequestDTO) on controller BTH_BUOI1.Controllers.ImagesController (BTH_BUOI1).
+2024-05-14 08:59:13.076 +07:00 [INF] Executed DbCommand (42ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Images] ([FileDescription], [FileExtension], [FileName], [FilePath], [FileSizeInBytes])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-05-14 08:59:13.121 +07:00 [INF] Executing OkObjectResult, writing value of type 'BTH_BUOI1.Models.Image'.
+2024-05-14 08:59:13.143 +07:00 [INF] Executed action BTH_BUOI1.Controllers.ImagesController.Upload (BTH_BUOI1) in 716.2733ms
+2024-05-14 08:59:13.145 +07:00 [INF] Executed endpoint 'BTH_BUOI1.Controllers.ImagesController.Upload (BTH_BUOI1)'
+2024-05-14 08:59:13.152 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5081/api/Images/upload - 200 null application/json; charset=utf-8 823.9008ms

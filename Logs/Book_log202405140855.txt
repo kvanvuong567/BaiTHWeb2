@@ -1,0 +1,13 @@
+2024-05-14 08:55:28.136 +07:00 [INF] User profile is available. Using 'C:\Users\kvanv\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-05-14 08:55:28.871 +07:00 [INF] Now listening on: http://localhost:5081
+2024-05-14 08:55:28.892 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-14 08:55:28.894 +07:00 [INF] Hosting environment: Development
+2024-05-14 08:55:28.895 +07:00 [INF] Content root path: D:\USB VUONG\Lập trình web2 (API)\Bài Tập\BTH_BUOI1
+2024-05-14 08:55:35.473 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5081/swagger/index.html - null null
+2024-05-14 08:55:36.321 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5081/swagger/index.html - 200 null text/html;charset=utf-8 864.6104ms
+2024-05-14 08:55:39.432 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5081/_vs/browserLink - null null
+2024-05-14 08:55:39.443 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5081/_framework/aspnetcore-browser-refresh.js - null null
+2024-05-14 08:55:39.656 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5081/_framework/aspnetcore-browser-refresh.js - 200 13754 application/javascript; charset=utf-8 212.7138ms
+2024-05-14 08:55:39.889 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5081/_vs/browserLink - 200 null text/javascript; charset=UTF-8 457.2758ms
+2024-05-14 08:55:40.010 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5081/swagger/v1/swagger.json - null null
+2024-05-14 08:55:40.966 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5081/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 956.4179ms

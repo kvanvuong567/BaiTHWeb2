@@ -28,6 +28,8 @@
 
   <ItemGroup>
     <Folder Include="Logs\" />
+    <Folder Include="Models\Interfaces\" />
+    <Folder Include="Images\" />
   </ItemGroup>
 
 </Project>

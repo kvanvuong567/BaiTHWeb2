@@ -1,0 +1,11 @@
+2024-05-14 09:01:09.903 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5081/api/Images/Download?id=1 - null null
+2024-05-14 09:01:09.915 +07:00 [INF] Executing endpoint 'BTH_BUOI1.Controllers.ImagesController.DownloadImage (BTH_BUOI1)'
+2024-05-14 09:01:09.919 +07:00 [INF] Route matched with {action = "DownloadImage", controller = "Images"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DownloadImage(Int32) on controller BTH_BUOI1.Controllers.ImagesController (BTH_BUOI1).
+2024-05-14 09:01:09.961 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileDescription], [i].[FileExtension], [i].[FileName], [i].[FilePath], [i].[FileSizeInBytes]
+FROM [Images] AS [i]
+WHERE [i].[Id] = @__Id_0
+2024-05-14 09:01:09.969 +07:00 [INF] Executing FileContentResult, sending file with download name 'hinh-nen-may-tinh-4k-game9-min.jpg.jpg' ...
+2024-05-14 09:01:09.987 +07:00 [INF] Executed action BTH_BUOI1.Controllers.ImagesController.DownloadImage (BTH_BUOI1) in 58.7156ms
+2024-05-14 09:01:09.990 +07:00 [INF] Executed endpoint 'BTH_BUOI1.Controllers.ImagesController.DownloadImage (BTH_BUOI1)'
+2024-05-14 09:01:09.993 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5081/api/Images/Download?id=1 - 200 112628 application/octet-stream 90.2541ms
